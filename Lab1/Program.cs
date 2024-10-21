@@ -30,7 +30,7 @@ public class Program
         //program.Task_1_16();
         //program.Task_1_17(10);
         //program.Task_1_18(24);
-        program.Task_2_1(0);
+        //program.Task_2_1(0);
         //program.Task_2_2();
         //program.Task_2_3(8, 2, 0);
         //program.Task_2_4(0.8);
@@ -100,13 +100,15 @@ public class Program
     public double Task_1_4(double x)
     {
         double answer = 0;
+        double k = 1;
 
         for (int i = 1; i < 10; i++)
         {
-            answer += (Math.Cos(x * i)) / (Math.Pow(x, i - 1));
+            answer += (Math.Cos(x * i)) / k;
+            k *= x;
         }
         answer = Math.Round(answer,2);
-        Console.WriteLine(answer);
+        
         // end
 
         return answer;
@@ -149,14 +151,10 @@ public class Program
     public int Task_1_8()
     {
         int answer = 0;
-
+        int k = 1;
         for (int i = 1; i < 7; i++)
         {
-            int k = 1;
-            for (int j = 1; j < i+1; j ++)
-            {
-                k *= j;
-            }
+            k *= i;
             answer += k;
         }
         Console.WriteLine(answer);
@@ -167,14 +165,15 @@ public class Program
         double answer = 0;
 
         // code here;
+        double k = 1;
+        double j = 1;
+        double l = 1;
         for(double i = 1;i<7;i++)
         {
-            int s = 1;
-            for (int j=1; j < i+1; j++)
-            {
-                s *= j;
-            }
-            answer += (Math.Pow(-1, i) * Math.Pow(5, i)) / s;
+            j *= 5;
+            k *= i;
+            l *= (-1);
+            answer += l * j / k;
         }
         // end
         answer = Math.Round(answer, 2);
@@ -273,20 +272,23 @@ public class Program
 
     {
         double answer = 0;
+        double c1 = 1;
+        double z1 = 1;
+        double c2 = 2;
+        double z2 = 1;
+        double c = 0;
+        double z = 0;
+        for (int i = 3; i <6; i ++)
         {
-            double c1 = 1;
-            double z1 = 1;
-            double c2 = 2;
-            double z2 = 1;
-            double c3 = c1 + c2;
-            double z3 = z1 + z2;
-            double c4 = c2 + c3;
-            double z4 = z2 + z3;
-            double c5 = c3 + c4;
-            double z5 = z3 + z4;
-            answer = c5 / z5;
-            
+            c = c1 + c2;
+            z = z1 + z2;
+            c1 = c2;
+            z1 = z2;
+            c2 = c;
+            z2 = z;
         }
+
+        answer = Math.Round(c / z, 2);
         
         Console.WriteLine(answer);
         return answer;
